@@ -1,0 +1,6 @@
+name: ReportSystem
+version: 1.0
+main: ReportSystem\ReportSystem
+load: STARTUP
+author: r3pt1s
+api: 3.0.0
