@@ -29,7 +29,7 @@ class ReportSystem extends PluginBase {
         $this->reportManager->loadReports();
         $this->reportManager->loadCReports();
                 $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
-        $this->getServer()->getCommandMap()->registerAll("reportsystem", [
+        $this->getServer()->getCommandMap()->registerAll("BetterReport", [
             new ReportCommand("report", "Report Command", "", ["r"]),
             new ReportsCommand("reports", "Reports Command", "", ["rs"])
         ]);
