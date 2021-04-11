@@ -9,5 +9,6 @@ A Better ReportSystem for PocketMine-MP
 - reports.command (See all Reports)
 - reports.see (Notify)
 
-# Language
-- Plugin Language: German
+# Aliases
+- /r (/report)
+- /rs (/reports)
