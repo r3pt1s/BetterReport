@@ -25,10 +25,10 @@ class ViewCReportForm {
                     $form->send($player);
             }
         });
-        $text = "§cSpieler: §e" . $report->getPlayer() . "\n§cReporter: §e" . $report->getReporter() . "\n§cGrund: §e" . $report->getReason() . "\n\n§aWähle eine Option aus!";
+        $text = "§cPlayer: §e" . $report->getPlayer() . "\n§cReporter: §e" . $report->getReporter() . "\n§cReason: §e" . $report->getReason() . "\n";
         $form->setTitle("§e" . $report->getName());
         $form->setContent($text);
-        $form->addButton("§cZurück");
+        $form->addButton("§4Back");
         $player->sendForm($form);
     }
 }

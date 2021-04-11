@@ -22,20 +22,20 @@ class OpenedReportsForm {
                     $report = ReportSystem::getInstance()->getReportManager()->getReportByName($data);
                     if ($report != null) {
                         if ($report->isReviewed()) {
-                            $player->sendMessage(ReportSystem::getPrefix() . "§cDer Report §e" . $report->getName() . " §cwird bereits bearbeitet!");
+                            $player->sendMessage(ReportSystem::getPrefix() . "§cThe Report §e" . $report->getName() . " §cis already being processed!");
                         } else {
-                            $player->sendMessage(ReportSystem::getPrefix() . "§aDu bearbeitest nun den Report §e" . $report->getName() . "§a...");
+                            $player->sendMessage(ReportSystem::getPrefix() . "§aYou are now editing the message §e" . $report->getName() . "§a...");
                             $form = new ViewReportForm();
                             $form->send($player, $report);
                             $report->setReviewed(true);
                         }
                     } else {
-                        $player->sendMessage(ReportSystem::getPrefix() . "§cDer Report existiert nicht!");
+                        $player->sendMessage(ReportSystem::getPrefix() . "§cThe Report does'nt exists!");
                     }
                 }
             }
         });
-        $form->setTitle("§aOffene Reports");
+        $form->setTitle("§aOpen Reports");
         $form->setContent($this->getText());
         foreach (ReportSystem::getInstance()->getReportManager()->getReports() as $report) {
             if ($report->isReviewed()) {
@@ -44,18 +44,18 @@ class OpenedReportsForm {
                 $form->addButton("§a" . $report->getName(), 0, "", $report->getName());
             }
         }
-        $form->addButton("§4Zurück", 0, "", "back");
+        $form->addButton("§4Back", 0, "", "back");
         $player->sendForm($form);
     }
 
     public function getText(): string {
         if (empty(ReportSystem::getInstance()->getReportManager()->getReports())) {
-            return "§cEs sind keine Reports vorhanden!";
+            return "§cNo closed reports available!";
         } else {
             if (count(ReportSystem::getInstance()->getReportManager()->getReports()) == 1) {
-                return "§aEs ist §e" . count(ReportSystem::getInstance()->getReportManager()->getReports()) . " Report §avorhanden!";
+                return "§aThere are §e" . count(ReportSystem::getInstance()->getReportManager()->getReports()) . " Report §aavailable!";
             } else {
-                return "§aEs sind §e" . count(ReportSystem::getInstance()->getReportManager()->getReports()) . " Reports §avorhanden!";
+                return "§aThere are §e" . count(ReportSystem::getInstance()->getReportManager()->getReports()) . " Reports §aavailable!";
             }
         }
     }

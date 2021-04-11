@@ -82,8 +82,8 @@ class ReportManager {
         foreach (Server::getInstance()->getOnlinePlayers() as $player) {
             if ($player->hasPermission("report.see")) {
                 if (API::isNotify($player->getName())) {
-                    $player->sendMessage(ReportSystem::getPrefix() . "§aNeuer Report!");
-                    $player->sendMessage(ReportSystem::getPrefix() . "§e" . $report->getReporter() . " §ahat §e"  . $report->getPlayer() . " §afür §c§l" . $report->getReason() . " §r§arepoted!");
+                    $player->sendMessage(ReportSystem::getPrefix() . "§aNew Report!");
+                    $player->sendMessage(ReportSystem::getPrefix() . "§e" . $report->getReporter() . " §areported §e"  . $report->getPlayer() . " §afor §c§l" . $report->getReason() . " §r§a!");
                 }
             }
         }
@@ -115,9 +115,9 @@ class ReportManager {
         $reporter = $report->getReporter();
         if (($reporterPlayer = Server::getInstance()->getPlayer($reporter)) != null) {
             if ($status == "ACCEPTED") {
-                $reporterPlayer->sendMessage(ReportSystem::getPrefix() . "§aDein Report gegen §e" . $report->getPlayer() . " §awurde §2angenommen§a!");
+                $reporterPlayer->sendMessage(ReportSystem::getPrefix() . "§aYour Report against §e" . $report->getPlayer() . " §awas §2accepted§a!");
             } else if ($status == "DENIED") {
-                $reporterPlayer->sendMessage(ReportSystem::getPrefix() . "§aDein Report gegen §e" . $report->getPlayer() . " §awurde §cabgelehnt§a!");
+                $reporterPlayer->sendMessage(ReportSystem::getPrefix() . "§aYour Report against §e" . $report->getPlayer() . " §awas §crejected§a!");
             }
         } else {
             if ($status != "CLOSED") {

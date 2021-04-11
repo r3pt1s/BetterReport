@@ -30,8 +30,8 @@ class ReportCommand extends Command {
                     $sender->sendMessage(ReportSystem::getPrefix() . "§cDiser Spieler war noch nie auf dem Server!");
                 }
             } else {
-                $sender->sendMessage(ReportSystem::getPrefix() . "§cKein gültiger Grund!");
-                $sender->sendMessage(ReportSystem::getPrefix() . "§cVerfügbare Gründe: §e" . implode(", ", ReportSystem::getInstance()->getReportManager()->getReasons()));
+                $sender->sendMessage(ReportSystem::getPrefix() . "§cInvalid Reason!");
+                $sender->sendMessage(ReportSystem::getPrefix() . "§cValid Reasons: §e" . implode(", ", ReportSystem::getInstance()->getReportManager()->getReasons()));
             }
         } else {
             $sender->sendMessage(ReportSystem::getPrefix() . "§c/report <user> <reason>");

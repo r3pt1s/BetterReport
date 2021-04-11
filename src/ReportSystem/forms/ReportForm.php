@@ -30,11 +30,11 @@ class ReportForm {
             }
         });
         $form->setTitle("§eReportSystem");
-        $form->setContent("§7Wähle eine Option aus!");
-        $form->addButton("§aOffene Reports", 0, "", "or");
-        $form->addButton("§cGeschlossene Reports", 0, "", "cr");
-        $form->addButton("§bEinstellungen", 0, "", "s");
-        $form->addButton("§4Schließen", 0, "", "close");
+        $form->setContent("§eChoose an Option!");
+        $form->addButton("§aOpen Reports", 0, "", "or");
+        $form->addButton("§cClosed Reports", 0, "", "cr");
+        $form->addButton("§bSettings", 0, "", "s");
+        $form->addButton("§4Close", 0, "", "close");
         $player->sendForm($form);
     }
 }

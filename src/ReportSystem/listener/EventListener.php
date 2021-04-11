@@ -22,11 +22,12 @@ class EventListener implements Listener {
                 if (isset(ReportSystem::getInstance()->reportEdited[$event->getPlayer()->getName()]["Reason"])) {
                     if (isset(ReportSystem::getInstance()->reportEdited[$event->getPlayer()->getName()]["Report"])) {
                         if (isset(ReportSystem::getInstance()->reportEdited[$event->getPlayer()->getName()]["Player"])) {
+                            $reportedPlayer = ReportSystem::getInstance()->reportEdited[$player->getName()]["Player"];
                             if (($status = ReportSystem::getInstance()->reportEdited[$event->getPlayer()->getName()]["Status"]) == "ACCEPTED") {
-                                $player->sendMessage(ReportSystem::getPrefix() . "§aWärend du Offline warst wurde dein Report gegen §e" . ReportSystem::getInstance()->reportEdited[$player->getName()]["Player"] . " §2angenommen§a!");
+                                $player->sendMessage(ReportSystem::getPrefix() . "§aWhile you were offline, your report was §2accepted §against §e" . $reportedPlayer . "§a!");
                                 unset(ReportSystem::getInstance()->reportEdited[array_search($player->getName(), ReportSystem::getInstance()->reportEdited)]);
                             } else if ($status == "DENIED") {
-                                $player->sendMessage(ReportSystem::getPrefix() . "§aWärend du Offline warst wurde dein Report gegen §e" . ReportSystem::getInstance()->reportEdited[$player->getName()]["Player"] . " §cabgelehnt§a!");
+                                $player->sendMessage(ReportSystem::getPrefix() . "§aWhile you were offline, your report was §crejected §against §e" . $reportedPlayer . "§a!");
                                 unset(ReportSystem::getInstance()->reportEdited[array_search($player->getName(), ReportSystem::getInstance()->reportEdited)]);
                             }
                         }

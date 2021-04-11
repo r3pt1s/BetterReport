@@ -33,7 +33,7 @@ class SettingsForm {
                 }
             } else if ($data == 1) {
                 $player->addEffect(new EffectInstance(Effect::getEffect(Effect::BLINDNESS)));
-                $player->sendTitle("§aGESPEICHERT!", "", -1, 2, -1);
+                $player->sendTitle("§aSAVED!", "", -1, 2, -1);
                 ReportSystem::getInstance()->getScheduler()->scheduleDelayedTask(new EffectTask($player->getName()), 40);
                 if (isset($this->changes[$player->getName()])) {
                     if (isset($this->changes[$player->getName()]["Notify"])) {
@@ -43,10 +43,10 @@ class SettingsForm {
                 }
             }
         });
-        $form->setTitle("§bEinstellungen");
-        $form->setContent("§eWähle eine Option aus!");
-        $form->addButton("§cBenachrichtungen\n§8[" . $this->boolToString(API::isNotify($player->getName())) . "§8]");
-        $form->addButton("§aSpeichern");
+        $form->setTitle("§bSettings");
+        $form->setContent("§eChoose an Option!");
+        $form->addButton("§cNotify\n§8[" . $this->boolToString(API::isNotify($player->getName())) . "§8]");
+        $form->addButton("§aSave");
         $player->sendForm($form);
     }
 
@@ -54,10 +54,10 @@ class SettingsForm {
         $string = "";
         switch ($value) {
             case true:
-                $string = "§aAktiviert§7";
+                $string = "§aActivated§7";
                 break;
             case false:
-                $string = "§4Deaktiviert§7";
+                $string = "§4Deactivated§7";
         }
         return $string;
     }

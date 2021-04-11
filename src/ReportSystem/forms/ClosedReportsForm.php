@@ -24,28 +24,28 @@ class ClosedReportsForm {
                         $form = new ViewCReportForm();
                         $form->send($player, $report);
                     } else {
-                        $player->sendMessage(ReportSystem::getPrefix() . "§cDer geschlossene Report existiert nicht!");
+                        $player->sendMessage(ReportSystem::getPrefix() . "§cThe closed Report does'nt exists!");
                     }
                 }
             }
         });
-        $form->setTitle("§cGeschlossene Reports");
+        $form->setTitle("§cClosed Reports");
         $form->setContent($this->getText());
         foreach (ReportSystem::getInstance()->getReportManager()->getCReports() as $report) {
             $form->addButton("§c" . $report->getName(), 0, "", $report->getName());
         }
-        $form->addButton("§4Zurück", 0, "", "back");
+        $form->addButton("§4Back", 0, "", "back");
         $player->sendForm($form);
     }
 
     private function getText() {
         if (empty(ReportSystem::getInstance()->getReportManager()->getCReports())) {
-            return "§cEs sind keine geschlossenen Reports vorhanden!";
+            return "§cNo closed reports available!";
         } else {
             if (count(ReportSystem::getInstance()->getReportManager()->getCReports()) == 1) {
-                return "§aEs ist §e" . count(ReportSystem::getInstance()->getReportManager()->getCReports()) . " geschlossener Report §avorhanden!";
+                return "§aThere are §e" . count(ReportSystem::getInstance()->getReportManager()->getCReports()) . " closed Report §aavailable!";
             } else {
-                return "§aEs sind §e" . count(ReportSystem::getInstance()->getReportManager()->getCReports()) . " geschlossene Reports §avorhanden!";
+                return "§aThere are §e" . count(ReportSystem::getInstance()->getReportManager()->getCReports()) . " closed Reports §aavailable!";
             }
         }
     }
